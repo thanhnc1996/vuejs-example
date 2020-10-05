@@ -15,7 +15,7 @@
             <td>${{user.price}}</td>
           </tr>
       </table>
-      <button><router-link to="/page1">Go to Page 1</router-link></button>
+      <button><router-link to="/">Go to Page 1</router-link></button>
       <button><router-link to="/page3">Go to Page 3</router-link></button>
     </div>
 </template>
