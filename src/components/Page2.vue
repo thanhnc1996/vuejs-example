@@ -2,16 +2,16 @@
   <div>      
       <div id="sort-control">
         <a @click="sort('title')">Title</a>
-        <a @click="sort('name')">Author(s)</a>
-        <a @click="sort('day_publish')">Publish Date</a>
+        <a @click="sort('authors')">Author(s)</a>
+        <a @click="sort('published')">Publish Date</a>
         <a @click="sort('price')">Price</a>
       </div>
 
         <table id="t-2">
           <tr v-for="(user, index) in sortedUsers" :key="index">
             <td>{{user.title}}</td>
-            <td>{{user.name}}</td>
-            <td>{{user.day_publish}}</td>
+            <td style="text-transform: capitalize;">{{transformCapitalize(user.authors)}}</td>
+            <td>{{user.published}}</td>
             <td>${{user.price}}</td>
           </tr>
       </table>
@@ -28,109 +28,159 @@ export default {
       currentSort: 'title',
       currentSortType: 'asc',
       users: [
-          {
-            title: "Drupal 7",
-            name: "David Mercer",
-            day_publish: "September 2010",
-            price: 44.99
-          },
-           {
-            title: "Amazon SimpleDB: LITE",
-            name: "Prabhakar Chaganti, Rich Helms",
-            day_publish: "May 2011",
-            price: 9.99
-          },
-           {
-            title: "Object-Oriented JavaScript",
-            name: "Stoyan Stefanov",
-            day_publish: "July 2008",
-            price: 39.99
-          },
-           {
-            title: "jQuery 1.4 Reference Guide",
-            name: "Karl Swedberg, Jonathan Chaffer",
-            day_publish: "January 2010",
-            price: 39.99
-          },
-           {
-            title: "Cocoa and Objective-C Cookbook",
-            name: "Jeff Hawkins",
-            day_publish: "May 2011",
-            price: 39.99
-          },
-           {
-            title: "Python Testing Cookbook",
-            name: "Greg L. Turnquist",
-            day_publish: "May 2011",
-            price: 44.99
-          },
-           {
-            title: "Linux Shell Scripting Cookbook",
-            name: "Sarath Lakshman",
-            day_publish: "January 2011",
-            price: 44.99
-          },
-           {
-            title: "Nginx 1 Web Server Implementation Cookbook",
-            name: "Dipankar Sarkar",
-            day_publish: "May 2011",
-            price: 39.99
-          },
-           {
-            title: "HTML5 Multimedia Development Cookbookcov.jpg",
-            name: "Dale Cruse, Lee Jordan",
-            day_publish: "May 2011",
-            price: 39.99
-          },
-           {
-            title: "Core Data Essentials.jpg",
-            name: "B.M. Harwani",
-            day_publish: "April 2011",
-            price: 44.99
-          },
-           {
-            title: "WordPress 3 Plugin Development Essentials",
-            name: "Brian Bondari, Everett Griffiths",
-            day_publish: "March 2011",
-            price: 39.99
-          },
-           {
-            title: "LaTeX Beginner's Guide",
-            name: "Stefan Kottwitz",
-            day_publish: "March 2011",
-            price: 44.99
-          },
-           {
-            title: "Panda3D 1.7 Game Developer's Cookbook",
-            name: "Christoph Lang",
-            day_publish: "March 2011",
-            price: 44.99
-          },
-           {
-            title: "CakePHP 1.3 Application Development Cookbook",
-            name: "Mariano Iglesias",
-            day_publish: "March 2011",
-            price: 39.99
-          },
-           {
-            title: "Magento 1.4 Themes Design",
-            name: "Richard Carter",
-            day_publish: "January 2011",
-            price: 39.99
-          },
-           {
-            title: "Django JavaScript Integration: AJAX and jQuery",
-            name: "Jonathan Hayward",
-            day_publish: "January 2011",
-            price: 44.99
-          },
-           {
-            title: "Magento 1.4 Development Cookbook",
-            name: "Nurul Ferdous",
-            day_publish: "December 2010",
-            price: 44.99
-          }
-      ]
+                { 
+                  img:"2862_OS.jpg",
+                  title:"Drupal 7",
+                  authors:"MERCER DAVID",
+                  published:"September 2010",
+                  price:44.99,
+                  publishedYM:"2010-09", 
+                  name: ""
+                } ,
+                {
+                  img: "3685EN_Amazon%20SimpleDB_LITE_0.jpg",
+                  title:"Amazon SimpleDB: LITE",
+                  authors:"CHAGANTI PRABHAKAR HELMS RICH",
+                  published:"May 2011",
+                  price:9.99,
+                  publishedYM:"2011-05", 
+                  name: ""
+                },
+                {
+                  img:"1847194141.jpg",
+                  title:"Object-Oriented JavaScript",
+                  authors:"STEFANOV STOYAN",
+                  published:"July 2008",
+                  price:39.99,
+                  publishedYM:"2008-07",
+                  name: ""
+                },
+                {
+                  img:"0042_MockupCover_0.jpg",
+                  title:"jQuery 1.4 Reference Guide",
+                  authors:"SWEDBERG KARL CHAFFER JONATHAN",
+                  published:"January 2010",
+                  price:39.99,
+                  publishedYM:"2010-01",
+                  name: ""
+                },
+                {
+                  img:"0386OT_Cocoa%20and%20OBjective-C%20Cookbookcov.jpg",
+                  title:"Cocoa and Objective-C Cookbook",
+                  authors:"HAWKINS JEFF",
+                  published:"May 2011",
+                  price:39.99,
+                  publishedYM:"2011-05",
+                  name: ""
+                },
+                { 
+                  img:"4668_Python%20Testing%20Cookbook.jpg",
+                  title:"Python Testing Cookbook",
+                  authors:"TURNQUIST GREG L.",
+                  published:"May 2011",
+                  price:44.99,
+                  publishedYM:"2011-05",
+                  name: ""
+                }, 
+                {
+                  img:"3760OS_Linux%20Shell%20Scripting%20Cookbook.jpg",
+                  title:"Linux Shell Scripting Cookbook",
+                  authors:"LAKSHMAN SARATH",
+                  published:"January 2011",
+                  price:44.99,
+                  publishedYM:"2011-01",
+                  name: ""
+                },
+                {
+                  img:"4965OS_Nginx%201%20Web%20Server%20Implementation%20Cookbook.jpg",
+                  title:"Nginx 1 Web Server Implementation Cookbook",
+                  authors:"SARKAR DIPANKAR",
+                  published:"May 2011",
+                  price:39.99,
+                  publishedYM:"2011-05",
+                  name: ""
+                },
+                {
+                  img:"1048OT_HTML5%20Multimedia%20Development%20Cookbookcov.jpg",
+                  title:"HTML5 Multimedia Development Cookbookcov.jpg",
+                  authors:"CRUSE DALE JORDAN LEE",
+                  published:"May 2011",
+                  price:39.99,
+                  publishedYM:"2011-05",
+                  name: ""
+                },
+                {
+                  img:"0942OT_Core%20Data%20Essentials_0.jpg",
+                  title:"Core Data Essentials.jpg",
+                  authors:"HARWANI B.M.",
+                  published:"April 2011",
+                  price:44.99,
+                  publishedYM:"2011-04",
+                  name: ""
+                },
+                {
+                  img:"3524OS_WordPress%203%20Plugin%20Development%20Essentials_0.jpg",
+                  title:"WordPress 3 Plugin Development Essentials",
+                  authors:"BONDARI BRIAN GRIFFITHS EVERETT",
+                  published:"March 2011",
+                  price:39.99,
+                  publishedYM:"2011-03",
+                  name: ""
+                },
+                {
+                  img:"9867_Latex%20cov.jpg",
+                  title:"LaTeX Beginner's Guide",
+                  authors:"KOTTWITZ STEFAN",
+                  published:"March 2011",
+                  price:44.99,"publishedYM":"2011-03",
+                  name: ""
+                },
+                {
+                  img:"2923OS_Panda3D%20game%20developer%E2%80%99s%20cookbook.jpg",
+                  title:"Panda3D 1.7 Game Developer's Cookbook",
+                  authors:"LANG CHRISTOPH",
+                  published:"March 2011",
+                  price:44.99,
+                  publishedYM:"2011-03",
+                  name: ""
+                },
+                {
+                  img:"1926_Cake%20PHP%201.3cov.jpg",
+                  title:"CakePHP 1.3 Application Development Cookbook",
+                  authors:"IGLESIAS MARIANO",
+                  published:"March 2011",
+                  price:39.99,
+                  publishedYM:"2011-03",
+                  name: ""
+                },
+                {
+                  img:"4804os_mockupcover_ex.jpg",
+                  title:"Magento 1.4 Themes Design",
+                  authors:"CARTER RICHARD",
+                  published:"January 2011",
+                  price:39.99,
+                  publishedYM:"2011-01",
+                  name: ""
+                },
+                {
+                  img:"0349OS_MockupCover_0.jpg",
+                  title:"Django JavaScript Integration: AJAX and jQuery",
+                  authors:"HAYWARD JONATHAN",
+                  published:"January 2011",
+                  price:44.99,
+                  publishedYM:"2011-01",
+                  name: ""
+                },
+                {
+                  img:"1445OS_MockupCover_Magento_1.4_Development_Cookbook_cb.jpg",
+                  title:"Magento 1.4 Development Cookbook",
+                  authors:"FERDOUS NURUL",
+                  published:"December 2010",
+                  price:44.99,
+                  publishedYM:"2010-12",
+                  name: ""
+                  }
+              ]
     }
   },
     methods: {
@@ -139,7 +189,10 @@ export default {
                this.currentSortType = this.currentSortType === 'asc' ? 'desc' : 'asc'
            }
            this.currentSort = sortName;
-       }
+       },
+        transformCapitalize(value){
+          return value.toLowerCase();
+        } 
     },
     computed:{
         sortedUsers() {
@@ -151,47 +204,16 @@ export default {
             if(a[this.currentSort] > b[this.currentSort]) return 1 * modifier;
             return 0;
             });
-        }
-    }
+        },
+    },
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-html, body {
-  margin: 0;
-  padding: 0;
-}
-
-body {
-  font: 80% Verdana, Helvetica, Arial, sans-serif;
-  color: #000;
-  background: #fff;
-}
-#container {
-  margin: 10px 2em;
-}
-
-h1 {
-  font-size: 2.5em;
-  margin-bottom: 0;
-}
-
-h2 {
-  font-size: 1.3em;
-  margin-bottom: .5em;
-}
-h3 {
-  font-size: 1.1em;
-  margin-bottom: 0;
-}
 
 #sort-control{
   text-align: left;
-}
-
-code {
-  font-size: 1.2em;
 }
 
 a {
@@ -206,13 +228,6 @@ a {
    Chapter Styles
 ***************************************/
 
-h3 {
-  margin: 1em 0;
-  font-size: 1.2em;
-  line-height: 1;
-  padding: .25em .5em;
-  color: #333;
-}
 table {
   margin: 1em 0;
 }
