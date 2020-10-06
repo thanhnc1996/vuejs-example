@@ -25,7 +25,7 @@ export default {
   name: 'Page2',
   data(){
     return {
-      currentSort: 'title',
+      currentSort: '',
       currentSortType: 'asc',
       users: [
                 { 
@@ -191,6 +191,20 @@ export default {
            this.currentSort = sortName;
        },
         transformCapitalize(value){
+          var arrText = value.split(" ");
+          if(arrText.length == 2){
+            return arrText.reverse().join(" ").toLowerCase();
+          }
+          else if(arrText.length == 4){
+            var arrName1 = arrText.splice(0,2).reverse()
+            var arrName2 = arrText.reverse();
+            return (arrName1.join(" ") + ", " + arrName2.join(" ")).toLowerCase();
+          }
+          else if(arrText.length == 3){
+            var arrName3 = arrText.splice(0,1).reverse()
+            var arrName4 = arrText.join(" ");
+            return (arrName4 + " " + arrName3.join(" ")).toLowerCase();
+          }
           return value.toLowerCase();
         } 
     },
@@ -261,6 +275,7 @@ th.sort a:focus {
 }
 th, td {
   padding: 3px 6px;
+  text-align: left;
 }
 button{
   margin: 0 20px;
